@@ -10,3 +10,4 @@ Hystrix dependecy is used just for Sliding/Rolling Window implementation and may
  * own implementation of sliding window algorithm
  * unit tests
  * extract interface for circuitbreaker and implement no op implementation
+ * get rid of hardcoded configuration :(
