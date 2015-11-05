@@ -17,7 +17,7 @@ Hystrix dependecy is used just for Sliding/Rolling Window implementation and may
 ```java
 public class TestCase {
 
-    private CircuitBreaker circuitBreaker = new DefaultCircuitBreaker(5, TimeUnit.SECONDS);
+    private CircuitBreaker circuitBreaker = new DefaultCircuitBreaker(5, TimeUnit.MINUTES);
     private MailService mailService = new MailService();
  		
     public String doSomething(String destination, Mail mail) throws Exception {
