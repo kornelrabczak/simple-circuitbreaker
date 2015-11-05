@@ -21,7 +21,7 @@ public class TestCase {
     private MailService mailService = new MailService();
  		
     public String doSomething(String destination, Mail mail) throws Exception {
-        circuitBreaker.doCall((flag) -> mailService.sendMail(destination, mail));
+        circuitBreaker.doCall((destination, mail) -> mailService.sendMail(destination, mail));
     }
 }
 
