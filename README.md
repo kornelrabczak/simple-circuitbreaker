@@ -1,2 +1,5 @@
 # simple-circuitbreaker
-simple and thread-safe circuitbreaker implementation without HALF-OPEN state based on hystrix implementation
+simple and thread-safe circuitbreaker implementation without HALF-OPEN state based on Hystrix implementation
+
+
+Hystrix dependecy is used just for Sliding/Rolling Window implementation and maybe it's little overhead to use the whole library from Netflix but this is just example :) When I find some time I will probably make my own Sliding Window implementation to keep simplicity.  
