@@ -1,5 +1,6 @@
 package com.thecookiezen.circuitbreaker;
 
+import com.thecookiezen.circuitbreaker.health.HealthConfiguration;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -11,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DefaultCircuitBreakerTest {
 
-    private CircuitBreaker sut = new DefaultCircuitBreaker(5, TimeUnit.SECONDS, new CircuitBreakerHealthConfiguration("test", 50, 1, 10000, 10, 1));
+    private CircuitBreaker sut = new DefaultCircuitBreaker(5, TimeUnit.SECONDS, new HealthConfiguration(50, 1, 10000, 10, 1));
 
     @Test
     public void shouldExecuteCallableAndStayClosed() throws CircuitBreakerCallableFailure {

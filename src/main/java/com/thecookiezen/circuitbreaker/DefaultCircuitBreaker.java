@@ -1,5 +1,9 @@
 package com.thecookiezen.circuitbreaker;
 
+import com.thecookiezen.circuitbreaker.health.CircuitHealth;
+import com.thecookiezen.circuitbreaker.health.HystrixHealth;
+import com.thecookiezen.circuitbreaker.health.HealthConfiguration;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -9,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class DefaultCircuitBreaker implements CircuitBreaker {
 
     private static final ScheduledExecutorService closeCircuitBreakerScheduledExecutor = Executors.newSingleThreadScheduledExecutor();
-    private final CircuitBreakerHealth circuitBreakerHealth;
+    private final CircuitHealth circuitBreakerHealth;
     private final AtomicBoolean available = new AtomicBoolean(true);
     private final long closeCircuitDelay;
     private final TimeUnit closeCircuitDelayTimeUnit;
@@ -17,13 +21,13 @@ public class DefaultCircuitBreaker implements CircuitBreaker {
     public DefaultCircuitBreaker(long closeCircuitDelay, TimeUnit closeCircuitDelayTimeUnit) {
         this.closeCircuitDelay = closeCircuitDelay;
         this.closeCircuitDelayTimeUnit = closeCircuitDelayTimeUnit;
-        this.circuitBreakerHealth = CircuitBreakerHealth.getInstance(CircuitBreakerHealthConfiguration.getDefault());
+        this.circuitBreakerHealth = new HystrixHealth(HealthConfiguration.getDefault());
     }
 
-    public DefaultCircuitBreaker(long closeCircuitDelay, TimeUnit closeCircuitDelayTimeUnit, CircuitBreakerHealthConfiguration config) {
+    public DefaultCircuitBreaker(long closeCircuitDelay, TimeUnit closeCircuitDelayTimeUnit, HealthConfiguration config) {
         this.closeCircuitDelay = closeCircuitDelay;
         this.closeCircuitDelayTimeUnit = closeCircuitDelayTimeUnit;
-        this.circuitBreakerHealth = CircuitBreakerHealth.getInstance(config);
+        this.circuitBreakerHealth = new HystrixHealth(config);
     }
 
     @Override
