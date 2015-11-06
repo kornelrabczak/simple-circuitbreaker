@@ -7,6 +7,7 @@ Hystrix dependecy is used just for Sliding/Rolling Window implementation and may
 
 # Todo 
 
+ * introduce HALF-OPEN state for full circuitbreaker functionality
  * own implementation of sliding window algorithm
  * simple circuit health based on errors count in a certain time interval without sliding window algorithm
  * ~~unit tests~~
