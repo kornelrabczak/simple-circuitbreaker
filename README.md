@@ -1,4 +1,7 @@
 # simple-circuitbreaker
+
+http://thecookiezen.com/blog/2015/11/15/circuitbreaker-cure-for-fallen-microservices/
+
 simple and thread-safe circuitbreaker implementation without HALF-OPEN state based on Hystrix implementation
 
 
